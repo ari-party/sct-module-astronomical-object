@@ -1,0 +1,102 @@
+local AstronomicalObject = {}
+
+local Starmap = require('Module:Starmap')
+local Infobox = require('Module:InfoboxNeue')
+local config = mw.loadJsonData('Module:Sandbox/Astrid/Astronomical object/config.json')
+local t = require('translate')
+local starmap = require('utils.starmap')
+
+local detailsSection = require('sections.details')
+local featuresSection = require('sections.features')
+local footerSection = require('sections.footer')
+local jumppointSection = require('sections.jumppoint')
+local sensorsSection = require('sections.sensors')
+
+---@alias args { affiliation: string?, classification: string?, code: string?, designation: string?, founded: string?, founder: string?, galactapedia: string?, habitable: string?, image: string?, landingzones: string?, location: string?, name: string?, population: string?, satellites: string?, sensordanger: string?, sensoreconomy: string?, sensorpopulation: string?, services: string?, shops: string?, starmap: string?, tunneldirection: string?, tunnelexit: string?, tunnelsize: string?, type: string?, }
+
+---@param args args
+---@param object table?
+---@return string?
+local function infoboxSubtitle(args, object)
+    if args.location then return args.location end
+    if not object then return nil end
+    return Starmap.pathTo(object)
+end
+
+---@param frame table https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual#Frame_object
+function AstronomicalObject.main(frame)
+    ---@type args
+    local args = frame:getParent().args
+
+    local infobox = Infobox:new({ placeholderImage = config.placeholder_image })
+
+    -- Find the astronomical object
+    local object = starmap.findStructure(args)
+    if not object then
+        return infobox:renderInfobox(infobox:renderMessage({
+            title = t('error_title'),
+            desc = t('error_invalid_args_desc')
+        }))
+    end
+
+    --- Infobox
+
+    local title = args.name or object.name or object.designation or 'Unknown'
+
+    infobox:renderImage(args.image)
+    infobox:renderHeader({
+        title = title,
+        subtitle = infoboxSubtitle(args, object) -- Location/path to
+    })
+    detailsSection(infobox, args, object)
+    infobox:renderSection({
+        content = {
+            infobox:renderItem({
+                label = t('lbl_services'),
+                data = args.services
+            }),
+            infobox:renderItem({
+                label = t('lbl_shops'),
+                data = args.shops
+            })
+        },
+        col = 2
+    })
+    jumppointSection(infobox, args, object)
+    featuresSection(infobox, args, object)
+    sensorsSection(infobox, args, object)
+
+    infobox:renderSection({
+        title = t('lbl_history'),
+        content = {
+            infobox:renderItem({
+                label = t('lbl_founded'),
+                data = args.founded,
+            }),
+            infobox:renderItem({
+                label = t('lbl_founder'),
+                data = args.founder,
+            })
+        },
+        col = 2
+    })
+    footerSection(infobox, args, object)
+
+    ---
+
+    return tostring(infobox:renderInfobox(nil, title))
+end
+
+function AstronomicalObject.test(args)
+    local frame = {}
+
+    function frame:getParent()
+        return {
+            args = args
+        }
+    end
+
+    mw.log(AstronomicalObject.main(frame))
+end
+
+return AstronomicalObject
