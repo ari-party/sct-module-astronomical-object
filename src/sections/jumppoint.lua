@@ -53,6 +53,7 @@ return function(infobox, args, object)
                 label = t('lbl_tunnel_size'),
                 data = getSize(args, object),
             }),
+
             infobox:renderItem({
                 label = t('lbl_tunnel_exit'),
                 data = getExit(args, object),

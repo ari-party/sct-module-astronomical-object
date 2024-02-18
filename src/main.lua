@@ -4,15 +4,17 @@ local Starmap = require('Module:Starmap')
 local Infobox = require('Module:InfoboxNeue')
 local config = mw.loadJsonData('Module:Sandbox/Astrid/Astronomical object/config.json')
 local t = require('translate')
+local getMetadata = require('metadata')
 local starmap = require('utils.starmap')
 
+local characteristicsSection = require('sections.characteristics')
 local detailsSection = require('sections.details')
 local featuresSection = require('sections.features')
 local footerSection = require('sections.footer')
 local jumppointSection = require('sections.jumppoint')
 local sensorsSection = require('sections.sensors')
 
----@alias args { affiliation: string?, classification: string?, code: string?, designation: string?, founded: string?, founder: string?, galactapedia: string?, habitable: string?, image: string?, landingzones: string?, location: string?, name: string?, population: string?, satellites: string?, sensordanger: string?, sensoreconomy: string?, sensorpopulation: string?, services: string?, shops: string?, starmap: string?, tunneldirection: string?, tunnelexit: string?, tunnelsize: string?, type: string?, }
+---@alias args { affiliation: string?, classification: string?, code: string?, designation: string?, founded: string?, founder: string?, galactapedia: string?, habitable: string?, image: string?, landingzones: string?, location: string?, name: string?, population: string?, satellites: string?, sensordanger: string?, sensoreconomy: string?, sensorpopulation: string?, services: string?, shops: string?, starmap: string?, tunneldirection: string?, tunnelexit: string?, tunnelsize: string?, type: string?, equatorialradius: string?, gravity: string?, atmosphere: string?, atmosphericpressure: string?, siderealday: string?, axialtilt: string?, density: string?, tidallylocked: string?, orbitalperiod: string?, orbitalspeed: string?, orbitalradius: string?, orbitaleccentricity: string?, aphelion: string?, perihelion: string?, inclination: string? }
 
 ---@param args args
 ---@param object table?
@@ -23,6 +25,14 @@ local function infoboxSubtitle(args, object)
     return Starmap.pathTo(object)
 end
 
+---@param infobox any
+local function renderError(infobox)
+    infobox:renderInfobox(infobox:renderMessage({
+        title = t('error_title'),
+        desc = t('error_invalid_args_desc')
+    }))
+end
+
 ---@param frame table https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual#Frame_object
 function AstronomicalObject.main(frame)
     ---@type args
@@ -30,25 +40,29 @@ function AstronomicalObject.main(frame)
 
     local infobox = Infobox:new({ placeholderImage = config.placeholder_image })
 
+    if not (args.code or args.name) then return renderError(infobox) end
+
     -- Find the astronomical object
     local object = starmap.findStructure(args)
-    if not object then
-        return infobox:renderInfobox(infobox:renderMessage({
-            title = t('error_title'),
-            desc = t('error_invalid_args_desc')
-        }))
-    end
+    if not object then return renderError(infobox) end
 
     --- Infobox
 
     local title = args.name or object.name or object.designation or 'Unknown'
+    local fullTitle = title
+    if (args.name or object.name) and (args.designation or object.designation) then
+        fullTitle = fullTitle ..
+            ' : ' .. (args.designation or object.designation)
+    end
 
     infobox:renderImage(args.image)
     infobox:renderHeader({
-        title = title,
-        subtitle = infoboxSubtitle(args, object) -- Location/path to
+        title = fullTitle,
+        subtitle = infoboxSubtitle(args, object)
     })
-    detailsSection(infobox, args, object)
+
+    local type, classification = detailsSection(infobox, args, object)
+
     infobox:renderSection({
         content = {
             infobox:renderItem({
@@ -62,9 +76,11 @@ function AstronomicalObject.main(frame)
         },
         col = 2
     })
+
     jumppointSection(infobox, args, object)
     featuresSection(infobox, args, object)
     sensorsSection(infobox, args, object)
+    characteristicsSection(infobox, args)
 
     infobox:renderSection({
         title = t('lbl_history'),
@@ -80,11 +96,15 @@ function AstronomicalObject.main(frame)
         },
         col = 2
     })
+
     footerSection(infobox, args, object)
 
     ---
 
-    return tostring(infobox:renderInfobox(nil, title))
+    local renderedInfobox = infobox:renderInfobox(nil, title)
+    local categories = getMetadata(args, object, type, classification)
+
+    return renderedInfobox .. categories
 end
 
 function AstronomicalObject.test(args)

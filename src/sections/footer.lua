@@ -29,6 +29,7 @@ return function(infobox, args, object)
                 spacebetween = true
             }),
         },
+
         button = {
             icon = 'WikimediaUI-Globe.svg',
             label = t('lbl_other_sites'),

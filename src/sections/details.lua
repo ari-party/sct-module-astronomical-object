@@ -34,7 +34,7 @@ end
 
 ---@param args args
 ---@param object table?
----@return string | nil
+---@return string?
 local function getAffiliation(args, object)
     local affiliation = stringUtil.split(args.affiliation or '', ',') -- Is an empty table if the arg isn't defined
     if #affiliation == 0 then
@@ -46,7 +46,7 @@ end
 
 ---@param args args
 ---@param object table?
----@return string | nil
+---@return string?
 local function getHabitable(args, object)
     local habitable = nil
 
@@ -68,6 +68,7 @@ end
 ---@param args args
 ---@param object table?
 ---@return string? type Translated type
+---@return string? classification Classification
 return function(infobox, args, object)
     local plainType, translatedType = getType(args, object)
     local classification = getClassification(args, object, plainType)
@@ -82,6 +83,7 @@ return function(infobox, args, object)
                 label = t('lbl_classification'),
                 data = classification,
             }),
+
             infobox:renderItem({
                 label = t('lbl_affiliation'),
                 data = getAffiliation(args, object),
@@ -94,5 +96,5 @@ return function(infobox, args, object)
         col = 2
     })
 
-    return plainType
+    return plainType, classification
 end
