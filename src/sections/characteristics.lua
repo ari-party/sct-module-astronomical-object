@@ -19,7 +19,7 @@ return function ( infobox, args )
                 data = args.density
             } ),
         },
-        col = 3
+        col = 2
     } )
 
     infobox:renderSection( {
