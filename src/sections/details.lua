@@ -94,6 +94,10 @@ return function ( infobox, args, object )
             } ),
 
             infobox:renderItem( {
+                label = t( 'lbl_population' ),
+                data = args.population,
+            } ),
+            infobox:renderItem( {
                 label = t( 'lbl_senator' ),
                 data = args.senator,
             } )

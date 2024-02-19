@@ -2,12 +2,12 @@
   "schema": {
     "fields": [
       {
-        "type": "string",
-        "name": "id"
-      },
-      {
         "type": "localized",
         "name": "message"
+      },
+      {
+        "type": "string",
+        "name": "id"
       }
     ]
   },
@@ -17,479 +17,10 @@
   },
   "data": [
     [
-      "error_invalid_args_desc",
-      {
-        "en": "Invalid or missing parameters.",
-        "de": "Ungültige oder fehlende Parameter."
-      }
-    ],
-    [
-      "error_no_data_desc",
-      {
-        "en": "Object data was unable to be retrieved.",
-        "de": "Objektdaten konnten nicht abgerufen werden."
-      }
-    ],
-    [
-      "error_title",
-      {
-        "en": "ERROR",
-        "de": "ERROR"
-      }
-    ],
-    [
-      "lbl_inclination",
-      {
-        "en": "Inclination",
-        "de": "Neigung"
-      }
-    ],
-    [
-      "lbl_senator",
-      {
-        "en": "Senator",
-        "de": "Senator(in)"
-      }
-    ],
-    [
-      "lbl_perihelion",
-      {
-        "en": "Perihelion",
-        "de": "Perihel"
-      }
-    ],
-    [
-      "lbl_aphelion",
-      {
-        "en": "Aphelion",
-        "de": "Aphel"
-      }
-    ],
-    [
-      "lbl_orbital_eccentricity",
-      {
-        "en": "Orbital eccentricity",
-        "de": "Orbitale Exzentrizität"
-      }
-    ],
-    [
-      "lbl_orbital_radius",
-      {
-        "en": "Orbital radius",
-        "de": "Orbitalradius"
-      }
-    ],
-    [
-      "lbl_orbital_speed",
-      {
-        "en": "Orbital speed",
-        "de": "Umlaufgeschwindigkeit"
-      }
-    ],
-    [
-      "lbl_orbital_period",
-      {
-        "en": "Orbital period",
-        "de": "Umlaufzeit"
-      }
-    ],
-    [
-      "lbl_orbital_parameters",
-      {
-        "en": "Orbital parameters",
-        "de": "Orbitalparameter"
-      }
-    ],
-    [
-      "lbl_tidally_locked",
-      {
-        "en": "Tidally locked",
-        "de": "Gezeitengesperrt"
-      }
-    ],
-    [
-      "lbl_axial_tilt",
-      {
-        "en": "Axial tilt",
-        "de": "Axiale Neigung"
-      }
-    ],
-    [
-      "lbl_sidereal_day",
-      {
-        "en": "Sidereal day",
-        "de": "Sterntag"
-      }
-    ],
-    [
-      "lbl_gravity",
-      {
-        "en": "Gravity",
-        "de": "Schwere"
-      }
-    ],
-    [
-      "lbl_equatorial_radius",
-      {
-        "en": "Equatorial radius",
-        "de": "Äquatorialer Radius"
-      }
-    ],
-    [
-      "lbl_physical_characteristics",
-      {
-        "en": "Physical characteristics",
-        "de": "Physikalische Eigenschaften"
-      }
-    ],
-    [
-      "lbl_density",
-      {
-        "en": "Density",
-        "de": "Dichte"
-      }
-    ],
-    [
-      "lbl_atmospheric_pressure",
-      {
-        "en": "Atmospheric pressure",
-        "de": "Luftdruck"
-      }
-    ],
-    [
-      "lbl_atmosphere",
-      {
-        "en": "Atmosphere",
-        "de": "Atmosphäre"
-      }
-    ],
-    [
-      "lbl_atmospheric_properties",
-      {
-        "en": "Atmospheric properties",
-        "de": "Atmosphärische Eigenschaften"
-      }
-    ],
-    [
-      "lbl_affiliation",
-      {
-        "en": "Affiliation",
-        "de": "Zugehörigkeit"
-      }
-    ],
-    [
-      "lbl_classification",
-      {
-        "en": "Classification",
-        "de": "Einstufung"
-      }
-    ],
-    [
-      "lbl_founded",
-      {
-        "en": "Founded",
-        "de": "Gegründet"
-      }
-    ],
-    [
-      "lbl_founder",
-      {
-        "en": "Founder",
-        "de": "Begründer"
-      }
-    ],
-    [
-      "lbl_galactapedia",
-      {
-        "en": "Galactapedia",
-        "de": "Galactapedia"
-      }
-    ],
-    [
-      "lbl_habitable",
-      {
-        "en": "Habitable",
-        "de": "Bewohnbar"
-      }
-    ],
-    [
-      "lbl_history",
-      {
-        "en": "History",
-        "de": "Geschichte"
-      }
-    ],
-    [
-      "lbl_landing_zones",
-      {
-        "en": "Landing zones",
-        "de": "Landezonen"
-      }
-    ],
-    [
-      "lbl_official_sites",
-      {
-        "en": "Official sites",
-        "de": "Offizielle Seiten"
-      }
-    ],
-    [
-      "lbl_other_sites",
-      {
-        "en": "Other sites",
-        "de": "Andere Seiten"
-      }
-    ],
-    [
-      "lbl_satellites",
-      {
-        "en": "Satellites",
-        "de": "Satelliten"
-      }
-    ],
-    [
-      "lbl_sensors",
-      {
-        "en": "Sensors",
-        "de": "Sensoren"
-      }
-    ],
-    [
-      "lbl_sensor_danger",
-      {
-        "en": "Danger",
-        "de": "Gefahr"
-      }
-    ],
-    [
-      "lbl_sensor_economy",
-      {
-        "en": "Economy",
-        "de": "Wirtschaft"
-      }
-    ],
-    [
-      "lbl_sensor_population",
-      {
-        "en": "Population",
-        "de": "Bevölkerung"
-      }
-    ],
-    [
-      "lbl_services",
-      {
-        "en": "Services",
-        "de": "Dienstleistungen"
-      }
-    ],
-    [
-      "lbl_shops",
-      {
-        "en": "Shops",
-        "de": "Geschäfte"
-      }
-    ],
-    [
-      "lbl_size",
-      {
-        "en": "Size",
-        "de": "Größe"
-      }
-    ],
-    [
-      "lbl_starmap",
-      {
-        "en": "Starmap",
-        "de": "Starmap"
-      }
-    ],
-    [
-      "lbl_starmap_code",
-      {
-        "en": "Starmap code",
-        "de": "Starmap Code"
-      }
-    ],
-    [
-      "lbl_starmap_id",
-      {
-        "en": "Starmap ID",
-        "de": "Starmap ID"
-      }
-    ],
-    [
-      "lbl_tunnel",
-      {
-        "en": "Tunnel",
-        "de": "Tunnel"
-      }
-    ],
-    [
-      "lbl_tunnel_direction",
-      {
-        "en": "Direction",
-        "de": "Richtung"
-      }
-    ],
-    [
-      "lbl_tunnel_exit",
-      {
-        "en": "Exit",
-        "de": "Ausfahrt"
-      }
-    ],
-    [
-      "lbl_tunnel_size",
-      {
-        "en": "Size",
-        "de": "Größe"
-      }
-    ],
-    [
-      "lbl_type",
-      {
-        "en": "Type",
-        "de": "Typ"
-      }
-    ],
-    [
-      "val_habitable_false",
-      {
-        "en": "No",
-        "de": "Nein"
-      }
-    ],
-    [
-      "val_habitable_nil",
+      "val_unknown",
       {
         "en": "Unknown",
         "de": "Unbekannt"
-      }
-    ],
-    [
-      "val_habitable_true",
-      {
-        "en": "Yes",
-        "de": "Ja"
-      }
-    ],
-    [
-      "val_tunnel_direction_b",
-      {
-        "en": "Bidirectional",
-        "de": "Bidirektional"
-      }
-    ],
-    [
-      "val_tunnel_direction_u",
-      {
-        "en": "Unidirectional",
-        "de": "Unidirektional"
-      }
-    ],
-    [
-      "val_tunnel_size_l",
-      {
-        "en": "Large",
-        "de": "Groß"
-      }
-    ],
-    [
-      "val_tunnel_size_m",
-      {
-        "en": "Medium",
-        "de": "Mittel"
-      }
-    ],
-    [
-      "val_tunnel_size_s",
-      {
-        "en": "Small",
-        "de": "Klein"
-      }
-    ],
-    [
-      "val_type_anomaly",
-      {
-        "en": "Anomaly",
-        "de": "Anomalie"
-      }
-    ],
-    [
-      "val_type_asteroid_belt",
-      {
-        "en": "Asteroid belt",
-        "de": "Asteroidengürtel"
-      }
-    ],
-    [
-      "val_type_asteroid_field",
-      {
-        "en": "Asteroid field",
-        "de": "Asteroidenfeld"
-      }
-    ],
-    [
-      "val_type_blackhole",
-      {
-        "en": "Black Hole",
-        "de": "Schwarzes Loch"
-      }
-    ],
-    [
-      "val_type_jumppoint",
-      {
-        "en": "Jump point",
-        "de": "Sprungpunkt"
-      }
-    ],
-    [
-      "val_type_landmark",
-      {
-        "en": "Landmark",
-        "de": "Wahrzeichen"
-      }
-    ],
-    [
-      "val_type_lz",
-      {
-        "en": "Landing zone",
-        "de": "Landezone"
-      }
-    ],
-    [
-      "val_type_manmade",
-      {
-        "en": "Man-made",
-        "de": "Künstlich"
-      }
-    ],
-    [
-      "val_type_moon",
-      {
-        "en": "Moon",
-        "de": "Mond"
-      }
-    ],
-    [
-      "val_type_planet",
-      {
-        "en": "Planet",
-        "de": "Planet"
-      }
-    ],
-    [
-      "val_type_poi",
-      {
-        "en": "Point of Interest",
-        "de": "Sehenswürdigkeit"
-      }
-    ],
-    [
-      "val_type_satellite",
-      {
-        "en": "Satellite",
-        "de": "Satellit"
       }
     ],
     [
@@ -500,10 +31,486 @@
       }
     ],
     [
-      "val_unknown",
+      "val_type_satellite",
+      {
+        "en": "Satellite",
+        "de": "Satellit"
+      }
+    ],
+    [
+      "val_type_poi",
+      {
+        "en": "Point of Interest",
+        "de": "Sehenswürdigkeit"
+      }
+    ],
+    [
+      "val_type_planet",
+      {
+        "en": "Planet",
+        "de": "Planet"
+      }
+    ],
+    [
+      "val_type_moon",
+      {
+        "en": "Moon",
+        "de": "Mond"
+      }
+    ],
+    [
+      "val_type_manmade",
+      {
+        "en": "Man-made",
+        "de": "Künstlich"
+      }
+    ],
+    [
+      "val_type_lz",
+      {
+        "en": "Landing zone",
+        "de": "Landezone"
+      }
+    ],
+    [
+      "val_type_landmark",
+      {
+        "en": "Landmark",
+        "de": "Wahrzeichen"
+      }
+    ],
+    [
+      "val_type_jumppoint",
+      {
+        "en": "Jump point",
+        "de": "Sprungpunkt"
+      }
+    ],
+    [
+      "val_type_blackhole",
+      {
+        "en": "Black Hole",
+        "de": "Schwarzes Loch"
+      }
+    ],
+    [
+      "val_type_asteroid_field",
+      {
+        "en": "Asteroid field",
+        "de": "Asteroidenfeld"
+      }
+    ],
+    [
+      "val_type_asteroid_belt",
+      {
+        "en": "Asteroid belt",
+        "de": "Asteroidengürtel"
+      }
+    ],
+    [
+      "val_type_anomaly",
+      {
+        "en": "Anomaly",
+        "de": "Anomalie"
+      }
+    ],
+    [
+      "val_tunnel_size_s",
+      {
+        "en": "Small",
+        "de": "Klein"
+      }
+    ],
+    [
+      "val_tunnel_size_m",
+      {
+        "en": "Medium",
+        "de": "Mittel"
+      }
+    ],
+    [
+      "val_tunnel_size_l",
+      {
+        "en": "Large",
+        "de": "Groß"
+      }
+    ],
+    [
+      "val_tunnel_direction_u",
+      {
+        "en": "Unidirectional",
+        "de": "Unidirektional"
+      }
+    ],
+    [
+      "val_tunnel_direction_b",
+      {
+        "en": "Bidirectional",
+        "de": "Bidirektional"
+      }
+    ],
+    [
+      "val_habitable_true",
+      {
+        "en": "Yes",
+        "de": "Ja"
+      }
+    ],
+    [
+      "val_habitable_nil",
       {
         "en": "Unknown",
         "de": "Unbekannt"
+      }
+    ],
+    [
+      "val_habitable_false",
+      {
+        "en": "No",
+        "de": "Nein"
+      }
+    ],
+    [
+      "lbl_type",
+      {
+        "en": "Type",
+        "de": "Typ"
+      }
+    ],
+    [
+      "lbl_tunnel_size",
+      {
+        "en": "Size",
+        "de": "Größe"
+      }
+    ],
+    [
+      "lbl_tunnel_exit",
+      {
+        "en": "Exit",
+        "de": "Ausfahrt"
+      }
+    ],
+    [
+      "lbl_tunnel_direction",
+      {
+        "en": "Direction",
+        "de": "Richtung"
+      }
+    ],
+    [
+      "lbl_tunnel",
+      {
+        "en": "Tunnel",
+        "de": "Tunnel"
+      }
+    ],
+    [
+      "lbl_starmap_id",
+      {
+        "en": "Starmap ID",
+        "de": "Starmap ID"
+      }
+    ],
+    [
+      "lbl_starmap_code",
+      {
+        "en": "Starmap code",
+        "de": "Starmap Code"
+      }
+    ],
+    [
+      "lbl_starmap",
+      {
+        "en": "Starmap",
+        "de": "Starmap"
+      }
+    ],
+    [
+      "lbl_size",
+      {
+        "en": "Size",
+        "de": "Größe"
+      }
+    ],
+    [
+      "lbl_shops",
+      {
+        "en": "Shops",
+        "de": "Geschäfte"
+      }
+    ],
+    [
+      "lbl_services",
+      {
+        "en": "Services",
+        "de": "Dienstleistungen"
+      }
+    ],
+    [
+      "lbl_population",
+      {
+        "en": "Population",
+        "de": "Bevölkerung"
+      }
+    ],
+    [
+      "lbl_sensor_population",
+      {
+        "en": "Population",
+        "de": "Bevölkerung"
+      }
+    ],
+    [
+      "lbl_sensor_economy",
+      {
+        "en": "Economy",
+        "de": "Wirtschaft"
+      }
+    ],
+    [
+      "lbl_sensor_danger",
+      {
+        "en": "Danger",
+        "de": "Gefahr"
+      }
+    ],
+    [
+      "lbl_sensors",
+      {
+        "en": "Sensors",
+        "de": "Sensoren"
+      }
+    ],
+    [
+      "lbl_satellites",
+      {
+        "en": "Satellites",
+        "de": "Satelliten"
+      }
+    ],
+    [
+      "lbl_other_sites",
+      {
+        "en": "Other sites",
+        "de": "Andere Seiten"
+      }
+    ],
+    [
+      "lbl_official_sites",
+      {
+        "en": "Official sites",
+        "de": "Offizielle Seiten"
+      }
+    ],
+    [
+      "lbl_landing_zones",
+      {
+        "en": "Landing zones",
+        "de": "Landezonen"
+      }
+    ],
+    [
+      "lbl_history",
+      {
+        "en": "History",
+        "de": "Geschichte"
+      }
+    ],
+    [
+      "lbl_habitable",
+      {
+        "en": "Habitable",
+        "de": "Bewohnbar"
+      }
+    ],
+    [
+      "lbl_galactapedia",
+      {
+        "en": "Galactapedia",
+        "de": "Galactapedia"
+      }
+    ],
+    [
+      "lbl_founder",
+      {
+        "en": "Founder",
+        "de": "Begründer"
+      }
+    ],
+    [
+      "lbl_founded",
+      {
+        "en": "Founded",
+        "de": "Gegründet"
+      }
+    ],
+    [
+      "lbl_classification",
+      {
+        "en": "Classification",
+        "de": "Einstufung"
+      }
+    ],
+    [
+      "lbl_affiliation",
+      {
+        "en": "Affiliation",
+        "de": "Zugehörigkeit"
+      }
+    ],
+    [
+      "lbl_atmospheric_properties",
+      {
+        "en": "Atmospheric properties",
+        "de": "Atmosphärische Eigenschaften"
+      }
+    ],
+    [
+      "lbl_atmosphere",
+      {
+        "en": "Atmosphere",
+        "de": "Atmosphäre"
+      }
+    ],
+    [
+      "lbl_atmospheric_pressure",
+      {
+        "en": "Atmospheric pressure",
+        "de": "Luftdruck"
+      }
+    ],
+    [
+      "lbl_density",
+      {
+        "en": "Density",
+        "de": "Dichte"
+      }
+    ],
+    [
+      "lbl_physical_characteristics",
+      {
+        "en": "Physical characteristics",
+        "de": "Physikalische Eigenschaften"
+      }
+    ],
+    [
+      "lbl_equatorial_radius",
+      {
+        "en": "Equatorial radius",
+        "de": "Äquatorialer Radius"
+      }
+    ],
+    [
+      "lbl_gravity",
+      {
+        "en": "Gravity",
+        "de": "Schwere"
+      }
+    ],
+    [
+      "lbl_sidereal_day",
+      {
+        "en": "Sidereal day",
+        "de": "Sterntag"
+      }
+    ],
+    [
+      "lbl_axial_tilt",
+      {
+        "en": "Axial tilt",
+        "de": "Axiale Neigung"
+      }
+    ],
+    [
+      "lbl_tidally_locked",
+      {
+        "en": "Tidally locked",
+        "de": "Gezeitengesperrt"
+      }
+    ],
+    [
+      "lbl_orbital_parameters",
+      {
+        "en": "Orbital parameters",
+        "de": "Orbitalparameter"
+      }
+    ],
+    [
+      "lbl_orbital_period",
+      {
+        "en": "Orbital period",
+        "de": "Umlaufzeit"
+      }
+    ],
+    [
+      "lbl_orbital_speed",
+      {
+        "en": "Orbital speed",
+        "de": "Umlaufgeschwindigkeit"
+      }
+    ],
+    [
+      "lbl_orbital_radius",
+      {
+        "en": "Orbital radius",
+        "de": "Orbitalradius"
+      }
+    ],
+    [
+      "lbl_orbital_eccentricity",
+      {
+        "en": "Orbital eccentricity",
+        "de": "Orbitale Exzentrizität"
+      }
+    ],
+    [
+      "lbl_aphelion",
+      {
+        "en": "Aphelion",
+        "de": "Aphel"
+      }
+    ],
+    [
+      "lbl_perihelion",
+      {
+        "en": "Perihelion",
+        "de": "Perihel"
+      }
+    ],
+    [
+      "lbl_senator",
+      {
+        "en": "Senator",
+        "de": "Senator(in)"
+      }
+    ],
+    [
+      "lbl_inclination",
+      {
+        "en": "Inclination",
+        "de": "Neigung"
+      }
+    ],
+    [
+      "error_title",
+      {
+        "en": "ERROR",
+        "de": "ERROR"
+      }
+    ],
+    [
+      "error_no_data_desc",
+      {
+        "en": "Object data was unable to be retrieved.",
+        "de": "Objektdaten konnten nicht abgerufen werden."
+      }
+    ],
+    [
+      "error_invalid_args_desc",
+      {
+        "en": "Invalid or missing parameters.",
+        "de": "Ungültige oder fehlende Parameter."
       }
     ]
   ]
