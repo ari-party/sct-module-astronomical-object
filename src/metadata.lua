@@ -2,6 +2,7 @@ local t = require( 'translate' )
 local linksUtil = require( 'utils.links' )
 local stringUtil = require( 'utils.string' )
 local tableUtil = require( 'utils.table' )
+local util = require( 'Module:Util' )
 
 --- Modified version of sections.details' getAffilation
 ---@param args args
@@ -38,6 +39,8 @@ return function ( args, object, type, classification )
 
     local systemName = tableUtil.safeAccess( object, 'star_system', 'name' )
     if systemName then table.insert( categories, systemName .. ' system' ) end
+
+    if type then table.insert( categories, util.pluralize( { args = { t( 'val_type_' .. string.lower( type ) ) } } ) ) end
 
     return linksUtil.convertCategories( categories )
 end
