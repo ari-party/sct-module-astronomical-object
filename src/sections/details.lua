@@ -1,4 +1,5 @@
 local Yesno = require( 'Module:Yesno' )
+local config = mw.loadJsonData( 'Module:Astronomical object/config.json' )
 local t = require( 'translate' )
 local linksUtil = require( 'utils.links' )
 local stringUtil = require( 'utils.string' )
@@ -29,7 +30,8 @@ local function getClassification( args, object, type )
     local possibleClassification = tableUtil.safeAccess( object, 'subtype', 'name' )
     if not possibleClassification then return nil end
     if possibleClassification == type then return nil end
-    return possibleClassification
+
+    return config.subtype_rename[ possibleClassification ] or possibleClassification
 end
 
 ---@param args args
