@@ -2,7 +2,7 @@ local AstronomicalObject = {}
 
 local Starmap = require( 'Module:Starmap' )
 local Infobox = require( 'Module:InfoboxNeue' )
-local config = mw.loadJsonData( 'Module:Sandbox/Astrid/Astronomical object/config.json' )
+local config = mw.loadJsonData( 'Module:Astronomical object/config.json' )
 local t = require( 'translate' )
 local getMetadata = require( 'metadata' )
 local starmap = require( 'utils.starmap' )
