@@ -35,14 +35,18 @@ return function ( infobox, args )
             } ),
 
             infobox:renderItem( {
+                label = t( 'lbl_sidereal_rotation' ),
+                data = args.siderealrotation
+            } ),
+            infobox:renderItem( {
                 label = t( 'lbl_sidereal_day' ),
                 data = args.siderealday
             } ),
+
             infobox:renderItem( {
                 label = t( 'lbl_axial_tilt' ),
                 data = args.axialtilt
             } ),
-
             infobox:renderItem( {
                 label = t( 'lbl_tidally_locked' ),
                 data = args.tidallylocked
