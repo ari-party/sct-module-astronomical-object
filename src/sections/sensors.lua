@@ -14,7 +14,7 @@ end
 ---@param object table?
 ---@return string?
 local function getSensorEconomy( args, object )
-    if args.sensordanger then return args.sensordanger end
+    if args.sensoreconomy then return args.sensoreconomy end
     local value = tableUtil.safeAccess( object, 'sensor_economy' )
     if value > 0 then return tostring( value ) .. '/10' else return nil end
 end
@@ -23,7 +23,7 @@ end
 ---@param object table?
 ---@return string?
 local function getSensorPopulation( args, object )
-    if args.sensordanger then return args.sensordanger end
+    if args.sensorpopulation then return args.sensorpopulation end
     local value = tableUtil.safeAccess( object, 'sensor_population' )
     if value > 0 then return tostring( value ) .. '/10' else return nil end
 end
