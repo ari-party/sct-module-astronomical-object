@@ -91,6 +91,11 @@ return function ( infobox, args, object )
             infobox:renderItem( {
                 label = t( 'lbl_habitable' ),
                 data = getHabitable( args, object ),
+            } ),
+
+            infobox:renderItem( {
+                label = t( 'lbl_senator' ),
+                data = args.senator,
             } )
         },
         col = 2

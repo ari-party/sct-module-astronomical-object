@@ -45,6 +45,13 @@
       }
     ],
     [
+      "lbl_senator",
+      {
+        "en": "Senator",
+        "de": "Senator(in)"
+      }
+    ],
+    [
       "lbl_perihelion",
       {
         "en": "Perihelion",
