@@ -39,8 +39,5 @@ return function ( args, object, type, classification )
     local systemName = tableUtil.safeAccess( object, 'star_system', 'name' )
     if systemName then table.insert( categories, systemName .. ' system' ) end
 
-    -- Add ' temp' to the end of each category for development
-    for index in ipairs( categories ) do categories [ index ] = categories [ index ] .. ' temp' end
-
     return linksUtil.convertCategories( categories )
 end
