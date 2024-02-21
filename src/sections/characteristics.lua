@@ -1,8 +1,34 @@
 local t = require( 'translate' )
+local tableUtil = require( 'utils.table' )
+
+---@param args args
+---@param object table?
+---@return string?
+local function getAxialTilt( args, object )
+    if args.axialtilt then return args.axialtilt end
+
+    local axialTilt = tableUtil.safeAccess( object, 'axial_tilt' )
+    if not axialTilt then return nil end
+
+    return string.format( '%.3f', axialTilt ) .. '°'
+end
+
+---@param args args
+---@param object table?
+---@return string?
+local function getOrbitalPeriod( args, object )
+    if args.orbitalperiod then return args.orbitalperiod end
+
+    local orbitalPeriod = tableUtil.safeAccess( object, 'orbit_period' )
+    if not orbitalPeriod then return nil end
+
+    return string.format( '%d', orbitalPeriod ) .. ' SED'
+end
 
 ---@param infobox any
 ---@param args args
-return function ( infobox, args )
+---@param object table?
+return function ( infobox, args, object )
     infobox:renderSection( {
         title = t( 'lbl_atmospheric_properties' ),
         content = {
@@ -45,7 +71,7 @@ return function ( infobox, args )
 
             infobox:renderItem( {
                 label = t( 'lbl_axial_tilt' ),
-                data = args.axialtilt
+                data = getAxialTilt( args, object )
             } ),
             infobox:renderItem( {
                 label = t( 'lbl_tidally_locked' ),
@@ -60,7 +86,7 @@ return function ( infobox, args )
         content = {
             infobox:renderItem( {
                 label = t( 'lbl_orbital_period' ),
-                data = args.orbitalperiod
+                data = getOrbitalPeriod( args, object )
             } ),
             infobox:renderItem( {
                 label = t( 'lbl_orbital_speed' ),

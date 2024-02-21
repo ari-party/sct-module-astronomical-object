@@ -80,7 +80,7 @@ function AstronomicalObject.main( frame )
     jumppointSection( infobox, args, object )
     featuresSection( infobox, args, object )
     sensorsSection( infobox, args, object )
-    characteristicsSection( infobox, args )
+    characteristicsSection( infobox, args, object )
 
     infobox:renderSection( {
         title = t( 'lbl_history' ),
