@@ -48,7 +48,7 @@ function AstronomicalObject.main( frame )
 
     --- Infobox
 
-    local title = args.name or object.name or object.designation or 'Unknown'
+    local title = args.name or object.name or args.designation or object.designation or 'Unknown'
     local fullTitle = title
     if (args.name or object.name) and (args.designation or object.designation) then
         fullTitle = fullTitle ..

@@ -8,7 +8,7 @@ local function getAxialTilt( args, object )
     if args.axialtilt then return args.axialtilt end
 
     local axialTilt = tableUtil.safeAccess( object, 'axial_tilt' )
-    if not axialTilt then return nil end
+    if not axialTilt or axialTilt == 0 then return nil end
 
     return string.format( '%.3f', axialTilt ) .. '°'
 end
@@ -20,7 +20,7 @@ local function getOrbitalPeriod( args, object )
     if args.orbitalperiod then return args.orbitalperiod end
 
     local orbitalPeriod = tableUtil.safeAccess( object, 'orbit_period' )
-    if not orbitalPeriod then return nil end
+    if not orbitalPeriod or orbitalPeriod == 0 then return nil end
 
     return string.format( '%d', orbitalPeriod ) .. ' SED'
 end
