@@ -2,7 +2,7 @@ local t = require( 'translate' )
 local linksUtil = require( 'utils.links' )
 local stringUtil = require( 'utils.string' )
 local tableUtil = require( 'utils.table' )
-local util = require( 'Module:Util' )
+local pluralize = require( 'utils.pluralize' )
 
 --- Modified version of sections.details' getAffilation
 ---@param args args
@@ -35,12 +35,12 @@ return function ( args, object, type, classification )
     --- Categories
     local categories = { 'Astronomical objects', 'Locations' } -- Defaults
 
-    if classification then table.insert( categories, classification ) end
+    if classification then table.insert( categories, pluralize( classification ) ) end
 
     local systemName = tableUtil.safeAccess( object, 'star_system', 'name' )
     if systemName then table.insert( categories, systemName .. ' system' ) end
 
-    if type then table.insert( categories, util.pluralize( { args = { t( 'val_type_' .. string.lower( type ) ) } } ) ) end
+    if type then table.insert( categories, pluralize( t( 'val_type_' .. string.lower( type ) ) ) ) end
 
     return linksUtil.convertCategories( categories )
 end
