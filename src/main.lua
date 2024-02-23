@@ -52,7 +52,7 @@ function AstronomicalObject.main( frame )
     local fullTitle = title
     if (args.name or object.name) and (args.designation or object.designation) then
         fullTitle = fullTitle ..
-          ' : ' .. (args.designation or object.designation)
+            ' : ' .. (args.designation or object.designation)
     end
 
     infobox:renderImage( args.image )

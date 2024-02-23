@@ -30,7 +30,7 @@ local function getExit( args, object )
     if args.tunnelexit then return args.tunnelexit end
     if not object or object.type ~= 'JUMPPOINT' then return nil end
 
-    local exit = linksUtil.convertLinks( { stringUtil.removeParentheses( object.tunnel.exit.designation ) } ) [ 1 ]
+    local exit = linksUtil.convertLinks( { stringUtil.removeParentheses( object.tunnel.exit.designation ) } )[ 1 ]
     local pathTo = Starmap.pathTo( Starmap.findStructure( 'object', object.tunnel.exit.code ), true ) -- the `true` is to tell Module:Starmap not to capitalize the first letter 👍
 
     if string.len( pathTo ) > 0 then return exit .. ', ' .. pathTo else return exit end

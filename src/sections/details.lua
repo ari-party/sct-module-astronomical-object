@@ -55,7 +55,7 @@ local function getHabitable( args, object )
     if args.habitable then
         habitable = Yesno( args.habitable )
     elseif
-      object then
+        object then
         habitable = object.habitable
     end
 

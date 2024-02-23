@@ -9,7 +9,7 @@ function TableUtil.filter( array, key, value, zero )
     local matches = {}
     if array then
         for _, item in ipairs( array ) do
-            if item [ key ] == value then
+            if item[ key ] == value then
                 table.insert( matches, item )
             end
         end
@@ -28,7 +28,7 @@ function TableUtil.safeAccess( object, ... )
     local value = object
     if not value then return end
     for _, key in ipairs( { ... } ) do
-        value = value [ key ]
+        value = value[ key ]
         if value == nil then return nil end
     end
     return value
