@@ -50,7 +50,7 @@ function AstronomicalObject.main( frame )
 
     local title = args.name or object.name or args.designation or object.designation or 'Unknown'
     local fullTitle = title
-    if (args.name or object.name) and (args.designation or object.designation) then
+    if (args.name or object.name) and (args.designation or object.designation) ~= (args.name or object.name) then
         fullTitle = fullTitle ..
             ' : ' .. (args.designation or object.designation)
     end
