@@ -20,7 +20,7 @@ local function getOrbitalPeriod( args, object )
     if args.orbitalperiod then return args.orbitalperiod end
 
     local orbitalPeriod = tableUtil.safeAccess( object, 'orbit_period' )
-    if not orbitalPeriod or orbitalPeriod == 0 then return nil end
+    if not orbitalPeriod or orbitalPeriod <= 0 then return nil end
 
     return string.format( '%d', orbitalPeriod ) .. ' SED'
 end
