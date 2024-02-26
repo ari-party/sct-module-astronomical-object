@@ -21,6 +21,20 @@ function TableUtil.filter( array, key, value, zero )
     end
 end
 
+--- Value is in table
+---@param array table<any>
+---@param target any
+---@return boolean
+function TableUtil.contains( array, target )
+    for _, value in ipairs( array ) do
+        if value == target then
+            return true
+        end
+    end
+
+    return false
+end
+
 --- Alternative for doing table[key][key], this returns nil instead of an error if it doesn't exist
 ---@param object table?
 ---@param ... string

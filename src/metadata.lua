@@ -1,3 +1,4 @@
+local config = mw.loadJsonData( 'Module:Astronomical object/config.json' )
 local t = require( 'translate' )
 local linksUtil = require( 'utils.links' )
 local stringUtil = require( 'utils.string' )
@@ -20,9 +21,12 @@ end
 ---@param args args
 ---@param object table?
 ---@param type string?
+---@param translatedType string?
 ---@param classification string?
----@return string
-return function ( args, object, type, classification )
+---@param parent table?
+---@return string categories
+---@return string shortDesc
+return function ( args, object, type, translatedType, classification, parent )
     --- SMW
     mw.smw.set( {
         [ t( 'lbl_starmap_id' ) ] = tableUtil.safeAccess( object, 'id' ),
@@ -42,5 +46,35 @@ return function ( args, object, type, classification )
 
     if type then table.insert( categories, pluralize( t( 'val_type_' .. string.lower( type ) ) ) ) end
 
-    return linksUtil.convertCategories( categories )
+    local shortDesc = ''
+    if translatedType and object and tableUtil.safeAccess( object, 'star_system', 'name' ) and parent then
+        local unknown = t( 'val_unknown' )
+
+        -- Has a parent that isn't a star
+        if parent.type ~= 'STAR' then
+            if tableUtil.contains( config.planetary_types, object.type ) then -- Planetary based
+                shortDesc = string.format(
+                    t( 'lbl_shortdesc_on' ),
+                    translatedType,
+                    parent.name or parent.designation or unknown,
+                    object.star_system.name
+                )
+            else -- Space station or something
+                shortDesc = string.format(
+                    t( 'lbl_shortdesc_orbiting' ),
+                    translatedType,
+                    parent.name or parent.designation or unknown,
+                    object.star_system.name
+                )
+            end
+        else
+            shortDesc = string.format(
+                t( 'lbl_shortdesc_in' ),
+                translatedType,
+                object.star_system.name
+            )
+        end
+    end
+
+    return linksUtil.convertCategories( categories ), shortDesc
 end

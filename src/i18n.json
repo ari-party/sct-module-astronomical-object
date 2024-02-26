@@ -52,6 +52,27 @@
       }
     ],
     [
+      "lbl_shortdesc_in",
+      {
+        "en": "%s in %s system",
+        "de": "%s im %s-System"
+      }
+    ],
+    [
+      "lbl_shortdesc_orbiting",
+      {
+        "en": "%s orbiting %s in %s system",
+        "de": "%s umkreist %s im %s-System"
+      }
+    ],
+    [
+      "lbl_shortdesc_on",
+      {
+        "en": "%s on %s in %s system",
+        "de": "%s auf %s im %s-System"
+      }
+    ],
+    [
       "lbl_perihelion",
       {
         "en": "Perihelion",

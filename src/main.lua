@@ -6,6 +6,7 @@ local config = mw.loadJsonData( 'Module:Astronomical object/config.json' )
 local t = require( 'translate' )
 local getMetadata = require( 'metadata' )
 local starmap = require( 'utils.starmap' )
+local tableUtil = require( 'utils.table' )
 
 local characteristicsSection = require( 'sections.characteristics' )
 local detailsSection = require( 'sections.details' )
@@ -61,7 +62,7 @@ function AstronomicalObject.main( frame )
         subtitle = infoboxSubtitle( args, object )
     } )
 
-    local type, classification = detailsSection( infobox, args, object )
+    local type, translatedType, classification = detailsSection( infobox, args, object )
 
     infobox:renderSection( {
         content = {
@@ -102,7 +103,16 @@ function AstronomicalObject.main( frame )
     ---
 
     local renderedInfobox = infobox:renderInfobox( nil, title )
-    local categories = getMetadata( args, object, type, classification )
+    local categories, shortDesc = getMetadata(
+        args,
+        object,
+        type,
+        translatedType,
+        classification,
+        tableUtil.safeAccess( object, 'parent' )
+    )
+
+    frame:callParserFunction( 'SHORTDESC', shortDesc )
 
     return renderedInfobox .. categories
 end

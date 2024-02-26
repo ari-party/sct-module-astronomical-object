@@ -7,8 +7,8 @@ local tableUtil = require( 'utils.table' )
 
 ---@param args args
 ---@param object table?
----@return string?
----@return string?
+---@return string? type
+---@return string? classification
 local function getType( args, object )
     local plainType = args.type
     if not plainType and object then plainType = object.type end
@@ -69,7 +69,8 @@ end
 ---@param infobox any
 ---@param args args
 ---@param object table?
----@return string? type Translated type
+---@return string? type Plain type
+---@return string? translatedType Translated type
 ---@return string? classification Classification
 return function ( infobox, args, object )
     local plainType, translatedType = getType( args, object )
@@ -107,5 +108,5 @@ return function ( infobox, args, object )
         col = 2
     } )
 
-    return plainType, classification
+    return plainType, translatedType, classification
 end

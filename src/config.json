@@ -1,9 +1,11 @@
 {
   "%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
   "module_lang": null,
-  "%placeholder_image": "Placeholder image to use if no image was found",
+
+  "%placeholder_image": "Placeholder image to use if no image was found.",
   "placeholder_image": "Placeholderv2.png",
-  "%subtype_rename": "Rename star subtypes",
+
+  "%subtype_rename": "Star subtype overwrites.",
   "subtype_rename": {
     "Main Sequence-Dwarf-G": "G-type main sequence",
     "Main Sequence-Dwarf-F": "F-type main sequence",
@@ -12,5 +14,8 @@
     "Main Sequence-Dwarf-B": "B-type main sequence",
     "Main Sequence-Dwarf-M": "M-type main sequence",
     "Main Sequence-Dwarf-O": "O-type main sequence"
-  }
+  },
+
+  "%planetary_types": "Types of objects that usually reside on a planet, and do not orbit.",
+  "planetary_types": ["LZ"]
 }
