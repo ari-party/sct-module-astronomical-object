@@ -1,7 +1,7 @@
 # Astronomical object
 
 > [!NOTE]  
-> View more information on [the Star Citizen Wiki](https://starcitizen.tools/Astronomical_object).
+> View more information on [the Star Citizen Wiki](https://starcitizen.tools/Module:Astronomical_object).
 
 ## Getting started with editing
 
