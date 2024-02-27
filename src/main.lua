@@ -7,6 +7,7 @@ local t = require( 'translate' )
 local getMetadata = require( 'metadata' )
 local starmap = require( 'utils.starmap' )
 local tableUtil = require( 'utils.table' )
+local stringUtil = require( 'utils.string' )
 
 local characteristicsSection = require( 'sections.characteristics' )
 local detailsSection = require( 'sections.details' )
@@ -23,7 +24,7 @@ local sensorsSection = require( 'sections.sensors' )
 local function infoboxSubtitle( args, object )
     if args.location then return args.location end
     if not object then return nil end
-    return Starmap.pathTo( object )
+    return stringUtil.clean( Starmap.pathTo( object ) )
 end
 
 ---@param infobox any
@@ -49,11 +50,11 @@ function AstronomicalObject.main( frame )
 
     --- Infobox
 
-    local title = args.name or object.name or args.designation or object.designation or 'Unknown'
+    local title = stringUtil.clean( args.name or object.name or args.designation or object.designation or 'Unknown' )
     local fullTitle = title
     if (args.name or object.name) and (args.designation or object.designation) ~= (args.name or object.name) then
         fullTitle = fullTitle ..
-            ' : ' .. (args.designation or object.designation)
+            ' : ' .. stringUtil.clean( args.designation or object.designation )
     end
 
     infobox:renderImage( args.image )
@@ -112,7 +113,10 @@ function AstronomicalObject.main( frame )
         tableUtil.safeAccess( object, 'parent' )
     )
 
-    frame:callParserFunction( 'SHORTDESC', shortDesc )
+    frame:callParserFunction(
+        'SHORTDESC',
+        stringUtil.clean( stringUtil.removeParentheses( shortDesc ) )
+    )
 
     return renderedInfobox .. categories
 end

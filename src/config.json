@@ -13,7 +13,9 @@
     "Main Sequence-Dwarf-A": "A-type main sequence",
     "Main Sequence-Dwarf-B": "B-type main sequence",
     "Main Sequence-Dwarf-M": "M-type main sequence",
-    "Main Sequence-Dwarf-O": "O-type main sequence"
+    "Main Sequence-Dwarf-O": "O-type main sequence",
+
+    "Giants-Giant-M": "M-type giant"
   },
 
   "%planetary_types": "Types of objects that usually reside on a planet, and do not orbit.",
