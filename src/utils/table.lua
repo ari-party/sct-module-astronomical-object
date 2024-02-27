@@ -1,4 +1,8 @@
-local TableUtil = {}
+local Common = require( 'Module:Common' )
+
+local TableUtil = {
+    safeAccess = Common.safeAccess
+}
 
 --- Filter table
 ---@param array table
@@ -33,19 +37,6 @@ function TableUtil.contains( array, target )
     end
 
     return false
-end
-
---- Alternative for doing table[key][key], this returns nil instead of an error if it doesn't exist
----@param object table?
----@param ... string
-function TableUtil.safeAccess( object, ... )
-    local value = object
-    if not value then return end
-    for _, key in ipairs( { ... } ) do
-        value = value[ key ]
-        if value == nil then return nil end
-    end
-    return value
 end
 
 return TableUtil
