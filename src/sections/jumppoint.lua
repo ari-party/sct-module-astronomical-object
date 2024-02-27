@@ -35,7 +35,8 @@ local function getExit( args, object )
     if exitObject.code == object.code then exitObject = object.tunnel.entry end
 
     local exit = linksUtil.convertLinks( { stringUtil.removeParentheses( exitObject.designation ) } )[ 1 ]
-    local pathTo = Starmap.pathTo( Starmap.findStructure( 'object', exitObject.code ), true ) -- the `true` is to tell Module:Starmap not to capitalize the first letter
+
+    local pathTo = stringUtil.lowerFirst( Starmap.pathTo( Starmap.findStructure( 'object', exitObject.code ) ) )
 
     if string.len( pathTo ) > 0 then
         return stringUtil.clean( exit .. ', ' .. pathTo )
@@ -49,19 +50,19 @@ end
 ---@param object table
 return function ( infobox, args, object )
     infobox:renderSection( {
-        title = t( 'lbl_tunnel' ),
+        title = t( 'lbl_jumpgate' ),
         content = {
             infobox:renderItem( {
-                label = t( 'lbl_tunnel_direction' ),
+                label = t( 'lbl_jumpgate_direction' ),
                 data = getDirection( args, object ),
             } ),
             infobox:renderItem( {
-                label = t( 'lbl_tunnel_size' ),
+                label = t( 'lbl_jumpgate_size' ),
                 data = getSize( args, object ),
             } ),
 
             infobox:renderItem( {
-                label = t( 'lbl_tunnel_exit' ),
+                label = t( 'lbl_jumpgate_exit' ),
                 data = getExit( args, object ),
             } )
         },

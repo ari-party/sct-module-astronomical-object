@@ -72,7 +72,7 @@ return function ( args, object, type, translatedType, classification, parent )
                     object.star_system.name
                 )
             end
-        else
+        else -- Planet or asteroid belt or of sorts (decendant of the system's star)
             shortDesc = string.format(
                 t( 'lbl_shortdesc_in' ),
                 translatedType,

@@ -1,3 +1,4 @@
+local common = require( 'Module:Common' )
 local t = require( 'translate' )
 local tableUtil = require( 'utils.table' )
 
@@ -10,7 +11,7 @@ local function getAxialTilt( args, object )
     local axialTilt = tableUtil.safeAccess( object, 'axial_tilt' )
     if not axialTilt or axialTilt == 0 then return nil end
 
-    return string.format( '%.3f', axialTilt ) .. '°'
+    return string.format( '%.3f', common.formatNum( axialTilt ) ) .. '°'
 end
 
 ---@param args args
@@ -22,7 +23,7 @@ local function getOrbitalPeriod( args, object )
     local orbitalPeriod = tableUtil.safeAccess( object, 'orbit_period' )
     if not orbitalPeriod or orbitalPeriod <= 0 then return nil end
 
-    return string.format( '%d', orbitalPeriod ) .. ' SED'
+    return string.format( '%d', common.formatNum( orbitalPeriod ) ) .. ' SED'
 end
 
 ---@param infobox any

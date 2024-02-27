@@ -353,28 +353,28 @@
       }
     ],
     [
-      "lbl_tunnel",
+      "lbl_jumpgate",
       {
-        "en": "Tunnel",
-        "de": "Tunnel"
+        "en": "Jump gate",
+        "de": "Sprungtor"
       }
     ],
     [
-      "lbl_tunnel_direction",
+      "lbl_jumpgate_direction",
       {
         "en": "Direction",
         "de": "Richtung"
       }
     ],
     [
-      "lbl_tunnel_exit",
+      "lbl_jumpgate_exit",
       {
         "en": "Exit",
         "de": "Ausfahrt"
       }
     ],
     [
-      "lbl_tunnel_size",
+      "lbl_jumpgate_size",
       {
         "en": "Size",
         "de": "Größe"
