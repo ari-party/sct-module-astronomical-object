@@ -42,7 +42,12 @@ return function ( args, object, type, translatedType, classification, parent )
     if classification then table.insert( categories, pluralize( classification ) ) end
 
     local systemName = tableUtil.safeAccess( object, 'star_system', 'name' )
-    if systemName then table.insert( categories, systemName .. ' system' ) end
+    if systemName then
+        table.insert(
+            categories,
+            stringUtil.clean( stringUtil.removeParentheses( systemName ) ) .. ' system'
+        )
+    end
 
     if type then table.insert( categories, pluralize( t( 'val_type_' .. string.lower( type ) ) ) ) end
 
