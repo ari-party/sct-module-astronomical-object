@@ -28,7 +28,7 @@ end
 
 ---@param infobox any
 local function renderError( infobox )
-    infobox:renderInfobox( infobox:renderMessage( {
+    return infobox:renderInfobox( infobox:renderMessage( {
         title = t( 'error_title' ),
         desc = t( 'error_invalid_args_desc' )
     } ) )
