@@ -37,7 +37,11 @@ local function getExit( args, object )
     local exit = linksUtil.convertLinks( { stringUtil.removeParentheses( exitObject.designation ) } )[ 1 ]
     local pathTo = Starmap.pathTo( Starmap.findStructure( 'object', exitObject.code ), true ) -- the `true` is to tell Module:Starmap not to capitalize the first letter
 
-    if string.len( pathTo ) > 0 then return exit .. ', ' .. pathTo else return exit end
+    if string.len( pathTo ) > 0 then
+        return stringUtil.clean( exit .. ', ' .. pathTo )
+    else
+        return stringUtil.clean( exit )
+    end
 end
 
 ---@param infobox any

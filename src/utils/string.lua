@@ -19,4 +19,12 @@ function StringUtil.split( str, sep )
     return matches
 end
 
+--- Replace obnoxious characters
+---@param str string Input string
+---@return string
+function StringUtil.clean( str )
+    local apostrophe = string.gsub( str, '’', '\'' )
+    return apostrophe
+end
+
 return StringUtil
