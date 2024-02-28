@@ -5,7 +5,6 @@ local Infobox = require( 'Module:InfoboxNeue' )
 local config = mw.loadJsonData( 'Module:Astronomical object/config.json' )
 local t = require( 'translate' )
 local getMetadata = require( 'metadata' )
-local starmap = require( 'utils.starmap' )
 local tableUtil = require( 'utils.table' )
 local stringUtil = require( 'utils.string' )
 
@@ -42,15 +41,26 @@ function AstronomicalObject.main( frame )
 
     local infobox = Infobox:new( { placeholderImage = config.placeholder_image } )
 
-    if not (args.code or args.name) then return renderError( infobox ) end
+    local pageTitle = mw.title.getCurrentTitle().text
+    local searchParameter = args.code or args.name or pageTitle
+
+    if not searchParameter then return renderError( infobox ) end
 
     -- Find the astronomical object
-    local object = starmap.findStructure( args )
+    local object = Starmap.findStructure( 'object', searchParameter )
     if not object then return renderError( infobox ) end
 
     --- Infobox
 
-    local title = stringUtil.clean( args.name or object.name or args.designation or object.designation or 'Unknown' )
+    local title = stringUtil.clean(
+        args.name or
+        object.name or
+        args.designation or
+        object.designation or
+        pageTitle or
+        'Unknown'
+    )
+
     local fullTitle = title
     if (args.name or object.name) and (args.designation or object.designation) ~= (args.name or object.name) then
         fullTitle = fullTitle ..
@@ -119,18 +129,6 @@ function AstronomicalObject.main( frame )
     )
 
     return renderedInfobox .. categories
-end
-
-function AstronomicalObject.test( args )
-    local frame = {}
-
-    function frame:getParent()
-        return {
-            args = args
-        }
-    end
-
-    mw.log( AstronomicalObject.main( frame ) )
 end
 
 return AstronomicalObject
