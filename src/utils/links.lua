@@ -6,8 +6,8 @@ function LinksUtil.convertCategories( categories )
     local mapped = {}
     for _, category in pairs( categories ) do
         if category ~= nil then
-            if string.sub( category, 1, 2 ) ~= '[[' then
-                category = string.format( '[[Category:%s]]', category )
+            if mw.ustring.sub( category, 1, 2 ) ~= '[[' then
+                category = mw.ustring.format( '[[Category:%s]]', category )
             end
             table.insert( mapped, category )
         end
@@ -20,7 +20,7 @@ end
 function LinksUtil.convertLinks( links )
     local converted = {}
     for _, link in ipairs( links ) do
-        table.insert( converted, string.format( '[[%s]]', link ) )
+        table.insert( converted, mw.ustring.format( '[[%s]]', link ) )
     end
     return converted
 end

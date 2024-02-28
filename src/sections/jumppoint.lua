@@ -10,7 +10,7 @@ local function getDirection( args, object )
     if args.tunneldirection then return args.tunneldirection end
     if not object or object.type ~= 'JUMPPOINT' then return nil end
 
-    return t( 'val_tunnel_direction_' .. string.lower( object.tunnel.direction ) )
+    return t( 'val_tunnel_direction_' .. mw.ustring.lower( object.tunnel.direction ) )
 end
 
 ---@param args args
@@ -20,7 +20,7 @@ local function getSize( args, object )
     if args.tunnelsize then return args.tunnelsize end
     if not object or object.type ~= 'JUMPPOINT' then return nil end
 
-    return t( 'val_tunnel_size_' .. string.lower( object.tunnel.size ) )
+    return t( 'val_tunnel_size_' .. mw.ustring.lower( object.tunnel.size ) )
 end
 
 ---@param args args
@@ -38,7 +38,7 @@ local function getExit( args, object )
 
     local pathTo = stringUtil.lowerFirst( Starmap.pathTo( Starmap.findStructure( 'object', exitObject.code ) ) )
 
-    if string.len( pathTo ) > 0 then
+    if mw.ustring.len( pathTo ) > 0 then
         return stringUtil.clean( exit .. ', ' .. pathTo )
     else
         return stringUtil.clean( exit )

@@ -14,7 +14,7 @@ local function getType( args, object )
     if not plainType and object then plainType = object.type end
 
     local translatedType = nil
-    if plainType then translatedType = t( 'val_type_' .. string.lower( plainType ) ) end
+    if plainType then translatedType = t( 'val_type_' .. mw.ustring.lower( plainType ) ) end
 
     return plainType, translatedType
 end
