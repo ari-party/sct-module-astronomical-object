@@ -46,10 +46,11 @@ local function getEntryAndExit( args, object )
         end
 
         if not exit then
-            exit = '[[' .. stringUtil.clean(
-                stringUtil.removeParentheses( object.tunnel.exit.designation )
-            ) .. ']], ' .. Starmap.inSystem(
-                Starmap.findStructure( 'system', object.tunnel.exit.star_system_id )
+            exit = stringUtil.clean(
+                '[[' .. stringUtil.removeParentheses( object.tunnel.exit.designation ) .. ']], ' ..
+                Starmap.inSystem(
+                    Starmap.findStructure( 'system', object.tunnel.exit.star_system_id )
+                )
             )
 
             exitCode = object.tunnel.exit.code
