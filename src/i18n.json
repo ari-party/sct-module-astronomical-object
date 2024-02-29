@@ -367,6 +367,13 @@
       }
     ],
     [
+      "lbl_jumpgate_entry",
+      {
+        "en": "Entry",
+        "de": "Eintrag"
+      }
+    ],
+    [
       "lbl_jumpgate_exit",
       {
         "en": "Exit",

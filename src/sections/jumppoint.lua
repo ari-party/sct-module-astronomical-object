@@ -1,6 +1,5 @@
 local Starmap = require( 'Module:Starmap' )
 local t = require( 'translate' )
-local linksUtil = require( 'utils.links' )
 local stringUtil = require( 'utils.string' )
 
 ---@param args args
@@ -25,45 +24,75 @@ end
 
 ---@param args args
 ---@param object table?
----@return string?
-local function getExit( args, object )
-    if args.tunnelexit then return args.tunnelexit end
-    if not object or object.type ~= 'JUMPPOINT' then return nil end
+---@return string? entry
+---@return string? entryCode
+---@return string? exit
+---@return string? exitCode
+local function getEntryAndExit( args, object )
+    local entry = args.tunnelentry
+    local entryCode
+    local exit = args.tunnelexit
+    local exitCode
 
-    local exitObject = object.tunnel.exit
-    -- Make sure the exit is not the current object
-    if exitObject.code == object.code then exitObject = object.tunnel.entry end
+    if object and object.type == 'JUMPPOINT' then
+        if not entry then
+            entry = '[[' .. stringUtil.clean(
+                stringUtil.removeParentheses( object.tunnel.entry.designation )
+            ) .. ']], ' .. Starmap.inSystem(
+                Starmap.findStructure( 'system', object.tunnel.entry.star_system_id )
+            )
 
-    local exit = linksUtil.convertLinks( { stringUtil.removeParentheses( exitObject.designation ) } )[ 1 ]
+            entryCode = object.tunnel.entry.code
+        end
 
-    local pathTo = stringUtil.lowerFirst( Starmap.pathTo( Starmap.findStructure( 'object', exitObject.code ) ) )
+        if not exit then
+            exit = '[[' .. stringUtil.clean(
+                stringUtil.removeParentheses( object.tunnel.exit.designation )
+            ) .. ']], ' .. Starmap.inSystem(
+                Starmap.findStructure( 'system', object.tunnel.exit.star_system_id )
+            )
 
-    if mw.ustring.len( pathTo ) > 0 then
-        return stringUtil.clean( exit .. ', ' .. pathTo )
-    else
-        return stringUtil.clean( exit )
+            exitCode = object.tunnel.exit.code
+        end
     end
+
+    return entry, entryCode, exit, exitCode
 end
 
 ---@param infobox any
 ---@param args args
 ---@param object table
 return function ( infobox, args, object )
+    --- Direction
+    local direction = getDirection( args, object )
+    smwData[ t( 'lbl_jumpgate_direction' ) ] = direction
+    --- Size
+    local size = getSize( args, object )
+    smwData[ t( 'lbl_jumpgate_size' ) ] = size
+    --- Exit
+    local entry, entryCode, exit, exitCode = getEntryAndExit( args, object )
+    smwData[ t( 'lbl_jumpgate_entry' ) ] = entryCode
+    smwData[ t( 'lbl_jumpgate_exit' ) ] = exitCode
+
     infobox:renderSection( {
         title = t( 'lbl_jumpgate' ),
         content = {
             infobox:renderItem( {
                 label = t( 'lbl_jumpgate_direction' ),
-                data = getDirection( args, object ),
+                data = direction,
             } ),
             infobox:renderItem( {
                 label = t( 'lbl_jumpgate_size' ),
-                data = getSize( args, object ),
+                data = size,
             } ),
 
             infobox:renderItem( {
+                label = t( 'lbl_jumpgate_entry' ),
+                data = entry,
+            } ),
+            infobox:renderItem( {
                 label = t( 'lbl_jumpgate_exit' ),
-                data = getExit( args, object ),
+                data = exit,
             } )
         },
         col = 2

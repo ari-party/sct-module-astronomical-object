@@ -30,6 +30,13 @@ end
 ---@param args args
 ---@param object table?
 return function ( infobox, args, object )
+    --- Atmosphere
+    smwData[ t( 'lbl_atmosphere' ) ] = args.atmosphere
+    --- Atmospheric pressure
+    smwData[ t( 'lbl_atmospheric_pressure' ) ] = args.atmosphericpressure
+    --- Density
+    smwData[ t( 'lbl_density' ) ] = args.density
+
     infobox:renderSection( {
         title = t( 'lbl_atmospheric_properties' ),
         content = {
@@ -41,6 +48,7 @@ return function ( infobox, args, object )
                 label = t( 'lbl_atmospheric_pressure' ),
                 data = args.atmosphericpressure
             } ),
+
             infobox:renderItem( {
                 label = t( 'lbl_density' ),
                 data = args.density
@@ -48,6 +56,18 @@ return function ( infobox, args, object )
         },
         col = 2
     } )
+
+    --- Equatorial radius
+    smwData[ t( 'lbl_equatorial_radius' ) ] = args.equatorialradius
+    --- Sidereal rotation
+    smwData[ t( 'lbl_sidereal_rotation' ) ] = args.siderealrotation
+    --- Sidereal day
+    smwData[ t( 'lbl_sidereal_day' ) ] = args.siderealday
+    --- Axial tilt
+    local axialTilt = getAxialTilt( args, object )
+    smwData[ t( 'lbl_axial_tilt' ) ] = axialTilt
+    --- Tidally locked
+    smwData[ t( 'lbl_tidally_locked' ) ] = args.tidallylocked
 
     infobox:renderSection( {
         title = t( 'lbl_physical_characteristics' ),
@@ -72,7 +92,7 @@ return function ( infobox, args, object )
 
             infobox:renderItem( {
                 label = t( 'lbl_axial_tilt' ),
-                data = getAxialTilt( args, object )
+                data = axialTilt
             } ),
             infobox:renderItem( {
                 label = t( 'lbl_tidally_locked' ),
@@ -82,12 +102,28 @@ return function ( infobox, args, object )
         col = 2
     } )
 
+    --- Orbital period
+    local orbitalPeriod = getOrbitalPeriod( args, object )
+    smwData[ t( 'lbl_orbital_period' ) ] = orbitalPeriod
+    --- Orbital speed
+    smwData[ t( 'lbl_orbital_speed' ) ] = args.orbitalspeed
+    --- Orbital radius
+    smwData[ t( 'lbl_orbital_radius' ) ] = args.orbitalradius
+    --- Orbital eccentricity
+    smwData[ t( 'lbl_orbital_eccentricity' ) ] = args.orbitaleccentricity
+    --- Aphelion
+    smwData[ t( 'lbl_aphelion' ) ] = args.aphelion
+    --- Perihelion
+    smwData[ t( 'lbl_perihelion' ) ] = args.perihelion
+    --- Inclination
+    smwData[ t( 'lbl_inclination' ) ] = args.inclination
+
     infobox:renderSection( {
         title = t( 'lbl_orbital_parameters' ),
         content = {
             infobox:renderItem( {
                 label = t( 'lbl_orbital_period' ),
-                data = getOrbitalPeriod( args, object )
+                data = orbitalPeriod
             } ),
             infobox:renderItem( {
                 label = t( 'lbl_orbital_speed' ),

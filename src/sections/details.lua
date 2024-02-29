@@ -48,6 +48,18 @@ end
 
 ---@param args args
 ---@param object table?
+---@return table
+local function getSMWAffiliation( args, object )
+    local affiliation = stringUtil.split( args.affiliation or '', ',' )
+    if #affiliation == 0 then
+        if not object then return {} end
+        for _, empire in ipairs( object.affiliation ) do table.insert( affiliation, empire.name ) end
+    end
+    return affiliation
+end
+
+---@param args args
+---@param object table?
 ---@return string?
 local function getHabitable( args, object )
     local habitable = nil
@@ -74,7 +86,20 @@ end
 ---@return string? classification Classification
 return function ( infobox, args, object )
     local plainType, translatedType = getType( args, object )
+    --- Type
+    smwData[ t( 'lbl_type' ) ] = plainType
+    --- Classification
     local classification = getClassification( args, object, plainType )
+    smwData[ t( 'lbl_classification' ) ] = classification
+    --- Affiliation
+    smwData[ t( 'lbl_affiliation' ) ] = getSMWAffiliation( args, object )
+    --- Habitable
+    local habitable = getHabitable( args, object )
+    smwData[ t( 'lbl_habitable' ) ] = habitable
+    --- Population
+    smwData[ t( 'lbl_population' ) ] = args.population
+    --- Senator
+    smwData[ t( 'lbl_senator' ) ] = args.senator
 
     infobox:renderSection( {
         content = {
@@ -93,7 +118,7 @@ return function ( infobox, args, object )
             } ),
             infobox:renderItem( {
                 label = t( 'lbl_habitable' ),
-                data = getHabitable( args, object ),
+                data = habitable,
             } ),
 
             infobox:renderItem( {

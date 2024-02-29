@@ -32,20 +32,30 @@ end
 ---@param args args
 ---@param object table?
 return function ( infobox, args, object )
+    --- Sensor: Danger
+    local sensorDanger = getSensorDanger( args, object )
+    smwData[ t( 'lbl_sensor_danger' ) ] = sensorDanger
+    --- Sensor: Economy
+    local sensorEconomy = getSensorEconomy( args, object )
+    smwData[ t( 'lbl_sensor_economy' ) ] = sensorEconomy
+    --- Sensor: Population
+    local sensorPopulation = getSensorPopulation( args, object )
+    smwData[ t( 'lbl_sensor_population' ) ] = sensorPopulation
+
     infobox:renderSection( {
         title = t( 'lbl_sensors' ),
         content = {
             infobox:renderItem( {
                 label = t( 'lbl_sensor_danger' ),
-                data = getSensorDanger( args, object )
+                data = sensorEconomy
             } ),
             infobox:renderItem( {
                 label = t( 'lbl_sensor_economy' ),
-                data = getSensorEconomy( args, object )
+                data = sensorEconomy
             } ),
             infobox:renderItem( {
                 label = t( 'lbl_sensor_population' ),
-                data = getSensorPopulation( args, object )
+                data = sensorPopulation
             } )
         },
         col = 3

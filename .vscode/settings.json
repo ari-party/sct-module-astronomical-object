@@ -1,4 +1,9 @@
 {
-  "Lua.diagnostics.globals": ["mw", "_bundler_load", "_bundler_register"],
+  "Lua.diagnostics.globals": [
+    "mw",
+    "_bundler_load",
+    "_bundler_register",
+    "smwData"
+  ],
   "Lua.diagnostics.ignoredFiles": "Disable"
 }

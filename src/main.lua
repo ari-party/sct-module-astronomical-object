@@ -15,7 +15,7 @@ local footerSection = require( 'sections.footer' )
 local jumppointSection = require( 'sections.jumppoint' )
 local sensorsSection = require( 'sections.sensors' )
 
----@alias args { affiliation: string?, classification: string?, code: string?, designation: string?, founded: string?, founder: string?, galactapedia: string?, habitable: string?, image: string?, landingzones: string?, location: string?, name: string?, population: string?, satellites: string?, sensordanger: string?, sensoreconomy: string?, sensorpopulation: string?, services: string?, shops: string?, starmap: string?, tunneldirection: string?, tunnelexit: string?, tunnelsize: string?, type: string?, equatorialradius: string?, gravity: string?, atmosphere: string?, atmosphericpressure: string?, siderealday: string?, axialtilt: string?, density: string?, tidallylocked: string?, orbitalperiod: string?, orbitalspeed: string?, orbitalradius: string?, orbitaleccentricity: string?, aphelion: string?, perihelion: string?, inclination: string?, senator: string?, siderealrotation: string? }
+---@alias args { affiliation: string?, classification: string?, code: string?, designation: string?, founded: string?, founder: string?, galactapedia: string?, habitable: string?, image: string?, landingzones: string?, location: string?, name: string?, population: string?, satellites: string?, sensordanger: string?, sensoreconomy: string?, sensorpopulation: string?, services: string?, shops: string?, starmap: string?, tunneldirection: string?, tunnelentry: string?, tunnelexit: string?, tunnelsize: string?, type: string?, equatorialradius: string?, gravity: string?, atmosphere: string?, atmosphericpressure: string?, siderealday: string?, axialtilt: string?, density: string?, tidallylocked: string?, orbitalperiod: string?, orbitalspeed: string?, orbitalradius: string?, orbitaleccentricity: string?, aphelion: string?, perihelion: string?, inclination: string?, senator: string?, siderealrotation: string? }
 
 ---@param args args
 ---@param object table?
@@ -115,12 +115,10 @@ function AstronomicalObject.main( frame )
 
     local renderedInfobox = infobox:renderInfobox( nil, title )
     local categories, shortDesc = getMetadata(
-        args,
         object,
         type,
         translatedType,
-        classification,
-        tableUtil.safeAccess( object, 'parent' )
+        classification
     )
 
     frame:callParserFunction(

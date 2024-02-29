@@ -21,6 +21,11 @@ return function ( infobox, args, object )
         if not satellites and satelliteCount > 0 then satellites = satelliteCount end
     end
 
+    --- Landing zones
+    smwData[ t( 'lbl_landing_zones' ) ] = landingzones
+    --- Satellites
+    smwData[ t( 'lbl_satellites' ) ] = satellites
+
     infobox:renderSection( {
         content = {
             infobox:renderItem( {
