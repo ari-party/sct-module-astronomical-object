@@ -19,5 +19,11 @@
   },
 
   "%planetary_types": "Types of objects that usually reside on a planet, and do not orbit.",
-  "planetary_types": ["LZ"]
+  "planetary_types": ["LZ"],
+
+  "%tunnelDirectionIcons": "Dictionary of the tunnel's directions and the corresponding icon/emoji",
+  "tunnelDirectionIcons": {
+    "B": "[[File:Twemoji12 2194.svg|frameless|15x15px]]",
+    "U": "[[File:Twemoji12 27a1.svg|frameless|15x15px]]"
+  }
 }

@@ -1,4 +1,5 @@
 local Starmap = require( 'Module:Starmap' )
+local config = mw.loadJsonData( 'Module:Astronomical object/config.json' )
 local t = require( 'translate' )
 local stringUtil = require( 'utils.string' )
 
@@ -75,12 +76,14 @@ return function ( infobox, args, object )
     smwData[ t( 'lbl_jumpgate_entry' ) ] = entryCode
     smwData[ t( 'lbl_jumpgate_exit' ) ] = exitCode
 
+    local directionIcon = config.tunnelDirectionIcons[ object.tunnel.direction ] or ''
+
     infobox:renderSection( {
         title = t( 'lbl_jumpgate' ),
         content = {
             infobox:renderItem( {
                 label = t( 'lbl_jumpgate_direction' ),
-                data = direction,
+                data = direction .. ' ' .. directionIcon,
             } ),
             infobox:renderItem( {
                 label = t( 'lbl_jumpgate_size' ),
