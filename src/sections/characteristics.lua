@@ -23,7 +23,7 @@ local function getOrbitalPeriod( args, object )
     local orbitalPeriod = tableUtil.safeAccess( object, 'orbit_period' )
     if not orbitalPeriod or orbitalPeriod <= 0 then return nil end
 
-    return mw.ustring.format( '%d', common.formatNum( orbitalPeriod ) ) .. ' SED'
+    return mw.ustring.format( '%s', common.formatNum( orbitalPeriod ) ) .. ' SED'
 end
 
 ---@param infobox any
