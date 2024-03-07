@@ -360,21 +360,21 @@
       }
     ],
     [
-      "lbl_jumpgate_direction",
+      "lbl_direction",
       {
         "en": "Direction",
         "de": "Richtung"
       }
     ],
     [
-      "lbl_jumpgate_entry",
+      "lbl_entry",
       {
         "en": "Entry",
         "de": "Eintrag"
       }
     ],
     [
-      "lbl_jumpgate_exit",
+      "lbl_exit",
       {
         "en": "Exit",
         "de": "Ausfahrt"
@@ -383,8 +383,8 @@
     [
       "lbl_jumpgate_size",
       {
-        "en": "Size",
-        "de": "Größe"
+        "en": "Jump gate size",
+        "de": "Jump-Gate-Größe"
       }
     ],
     [

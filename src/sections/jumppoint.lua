@@ -2,15 +2,21 @@ local Starmap = require( 'Module:Starmap' )
 local config = mw.loadJsonData( 'Module:Astronomical object/config.json' )
 local t = require( 'translate' )
 local stringUtil = require( 'utils.string' )
+local tableUtil = require( 'utils.table' )
 
 ---@param args args
 ---@param object table?
----@return string?
+---@return string? direction
+---@return string? formattedDirection
 local function getDirection( args, object )
     if args.tunneldirection then return args.tunneldirection end
     if not object or object.type ~= 'JUMPPOINT' then return nil end
 
-    return t( 'val_tunnel_direction_' .. mw.ustring.lower( object.tunnel.direction ) )
+    local translated = t( 'val_tunnel_direction_' .. mw.ustring.lower( object.tunnel.direction ) )
+
+    local icon = config.tunnelDirectionIcons[ object.tunnel.direction ]
+
+    return translated, translated .. ' ' .. (icon or '')
 end
 
 ---@param args args
@@ -66,24 +72,22 @@ end
 ---@param object table
 return function ( infobox, args, object )
     --- Direction
-    local direction = getDirection( args, object )
-    smwData[ t( 'lbl_jumpgate_direction' ) ] = direction
+    local direction, formattedDirection = getDirection( args, object )
+    smwData[ t( 'lbl_direction' ) ] = direction
     --- Size
     local size = getSize( args, object )
     smwData[ t( 'lbl_jumpgate_size' ) ] = size
     --- Exit
     local entry, entryCode, exit, exitCode = getEntryAndExit( args, object )
-    smwData[ t( 'lbl_jumpgate_entry' ) ] = entryCode
-    smwData[ t( 'lbl_jumpgate_exit' ) ] = exitCode
-
-    local directionIcon = config.tunnelDirectionIcons[ object.tunnel.direction ] or ''
+    smwData[ t( 'lbl_entry' ) ] = entryCode
+    smwData[ t( 'lbl_exit' ) ] = exitCode
 
     infobox:renderSection( {
         title = t( 'lbl_jumpgate' ),
         content = {
             infobox:renderItem( {
-                label = t( 'lbl_jumpgate_direction' ),
-                data = direction .. ' ' .. directionIcon,
+                label = t( 'lbl_direction' ),
+                data = formattedDirection,
             } ),
             infobox:renderItem( {
                 label = t( 'lbl_jumpgate_size' ),
@@ -91,11 +95,11 @@ return function ( infobox, args, object )
             } ),
 
             infobox:renderItem( {
-                label = t( 'lbl_jumpgate_entry' ),
+                label = t( 'lbl_entry' ),
                 data = entry,
             } ),
             infobox:renderItem( {
-                label = t( 'lbl_jumpgate_exit' ),
+                label = t( 'lbl_exit' ),
                 data = exit,
             } )
         },
