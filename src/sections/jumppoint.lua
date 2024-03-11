@@ -43,10 +43,11 @@ local function getEntryAndExit( args, object )
 
     if object and object.type == 'JUMPPOINT' then
         if not entry then
-            entry = '[[' .. stringUtil.clean(
-                stringUtil.removeParentheses( object.tunnel.entry.designation )
-            ) .. ']], ' .. Starmap.inSystem(
-                Starmap.findStructure( 'system', object.tunnel.entry.star_system_id )
+            entry = stringUtil.clean(
+                '[[' .. stringUtil.removeParentheses( object.tunnel.entry.designation ) .. ']], '
+                .. Starmap.inSystem(
+                    Starmap.findStructure( 'system', object.tunnel.entry.star_system_id )
+                )
             )
 
             entryCode = object.tunnel.entry.code
